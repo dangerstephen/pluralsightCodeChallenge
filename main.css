@@ -20,6 +20,8 @@ body {
   height: 320px;
   background: #F3F3F3;
   margin: 5%;
+  font-size: 14px;
+  padding: 10px;
 }
 
 .content {
@@ -83,4 +85,9 @@ h1.large {
   font-size: 42px;
   line-height: 50px;
   font-weight: 100;
+}
+
+.hidden {
+visibility: hidden;
+display: none;
 }

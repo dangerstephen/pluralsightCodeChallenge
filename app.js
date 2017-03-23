@@ -1,26 +1,27 @@
 // var input = ["KittenService: CamelCaser","CamelCaser: "];
-// This should return "CamelCaser, KittenService"
+  // This should return "CamelCaser, KittenService"
 
-// var input =["KittenService: ", "Leetmeme: Cyberportal", "Cyberportal: Ice", "CamelCaser: KittenService", "Fraudstream: Leetmeme", "Ice: "];
-// This should return "KittenService, Ice, Cyberportal, Leetmeme, CamelCaser, Fraudstream"
+var input =["KittenService: ", "Leetmeme: Cyberportal", "Cyberportal: Ice", "CamelCaser: KittenService", "Fraudstream: Leetmeme", "Ice: "];
+  // This should return "KittenService, Ice, Cyberportal, Leetmeme, CamelCaser, Fraudstream"
 
-var input =["KittenService: ", "Leetmeme: Cyberportal", "Cyberportal: Ice", "CamelCaser: KittenService", "Fraudstream: ", "Ice: Leetmeme"];
-// This should be rejected because of the cycle
+// var input =["KittenService: ", "Leetmeme: Cyberportal", "Cyberportal: Ice", "CamelCaser: KittenService", "Fraudstream: ", "Ice: Leetmeme"];
+  // This should be rejected because of the cycle
+
+  $('.content').append('<div class="card"><h1>Orignial Input:</h1><p>[ '+ input +' ]</p></div>');
 
 var output = [];
-$('.content').append('<div class="card"><p>[ '+ input +' ]</p></div>');
 
 
 function pkgOrder(input) {
-  if (input.length === 0){
+  if (input.length === 0 || !input){
     $('.content').append('<div class="card"><p>Sorry the information provided is invalid, please try again</p></div>');
     console.log("Sorry the information provided is invalid, please try again");
   } else {
     for (var i = 0; i < input.length; i++) {
             pkgInstall(input[i].trim());
         }
-    $('.content').append('<div class="card"><p>'+ output +'</p></div>');
-    console.log(input);
+        $('.content').append('<div class="card"><h1>Output:</h1><p>'+ output +'</p></div>');
+        console.log(input);
   }
 }
 
@@ -56,9 +57,18 @@ function pkgInstall(pkg) {
         return;
     }
 
-    else  {
+    else {
         output.push(pkgParas[0].trim());
+        if(output.length != input.length){
+          $('.content').append('<div class="card errors"><h1>Output:</h1><p>Sorry the information provided is invalid, please try again</p></div>');
+        } else if (output.length === input.length){
+          $('.errors').addClass('hidden');
+        } else {
+          $('.content').append('<div class="card errors"><p>This is awkward. But an unecptected error occured</p></div>');
+        }
+
     }
+
 }
 
 pkgOrder(input);
