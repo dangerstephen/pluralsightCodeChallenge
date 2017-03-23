@@ -18,11 +18,28 @@ body {
 .card {
   width: 450px;
   height: 320px;
-  background: #F3F3F3;
+  background: #F2F2F2;
   margin: 5%;
   font-size: 14px;
   padding: 10px;
 }
+
+.page {
+  width: 1000px;
+  height: 90%;
+  background: #F2F2F2;
+  margin: 5%;
+  font-size: 14px;
+  padding: 10px;
+}
+.page-hr{
+  border: 2px solid black;
+}
+
+.title{
+  text-align: center;
+}
+
 
 .content {
   width: calc(100% - 240px);
