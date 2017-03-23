@@ -1,4 +1,5 @@
 @import url('https://fonts.googleapis.com/css?family=Raleway');
+@import url('http://fonts.googleapis.com/css?family=Oswald:400,700,300');
 body {
     font-family: 'Raleway', sans-serif;
     background-color: #292929;
@@ -25,21 +26,34 @@ body {
 }
 
 .page {
-  width: 1000px;
+  width: 900px;
   height: 90%;
   background: #F2F2F2;
   margin: 5%;
-  font-size: 14px;
+  font-size: 20px;
   padding: 10px;
 }
+
 .page-hr{
   border: 2px solid black;
+}
+
+img{
+  height: 350px;
+  width: 320px;
+  float: left;
+  margin: 0 20px 20px 0
+}
+
+.about{
+margin: 15px;
+text-align: justify;
+text-indent: 2em;
 }
 
 .title{
   text-align: center;
 }
-
 
 .content {
   width: calc(100% - 240px);
@@ -65,11 +79,13 @@ body {
 .menuSplit{
   border: 1px solid #292929;
 }
+
 .menu {
   list-style: none;
   margin:  24px 0;
   padding: 0;
 }
+
 .menu li {
   display: block;
   height: 43px;
@@ -80,9 +96,11 @@ body {
   color: #0096fc;
   position: relative;
 }
+
 .menu li:hover {
   color: #292929;
 }
+
 .menu li:first-child {
   height: 45px;
   line-height: 35px;
@@ -98,6 +116,7 @@ body {
   text-transform: uppercase;
   letter-spacing: 17px;
 }
+
 h1.large {
   font-size: 42px;
   line-height: 50px;
@@ -107,4 +126,187 @@ h1.large {
 .hidden {
 visibility: hidden;
 display: none;
+}
+
+.def{
+  text-align: center;
+  font-size: 15px;
+  border: 1px solid grey;
+}
+
+
+
+#techList {
+	position: relative;
+  list-style: none;
+  margin: 5%;
+  padding: 5%;
+  font-family: 'Oswald', sans-serif;
+  font-size: 100%;
+  text-transform: uppercase;
+  color: #666;
+}
+
+#techList li {
+	position: absolute;
+  top: 0;
+  left: 0;
+}
+
+.html5 {
+  color: #0096fc;
+  font-weight: 700;
+  letter-spacing: -.05em;
+  -webkit-transform:
+  		scale(7.5, 7.8)
+ 			translate(1.18em, .68em);
+  -moz-transform:
+    	scale(7.5, 7.8)
+ 			translate(1.18em, .68em);
+}
+
+
+.db {
+  font-weight: 300;
+  letter-spacing: -.03em;
+  word-spacing: .3em;
+  -webkit-transform:
+    	scale(2)
+    	translate(2.12em, 5.14em);
+  -moz-transform:
+    	scale(2)
+    	translate(2.12em, 5.14em);
+}
+
+.javascript {
+  color: #0096fc;
+  font-weight: 400;
+  letter-spacing: -.04em;
+  -webkit-transform:
+    	scale(2.85, 3)
+      translate(7.14em, 3.55em);
+  -moz-transform:
+      scale(2.85, 3)
+      translate(7.14em, 3.55em);
+}
+
+.ajax {
+  letter-spacing: -0.01em;
+  font-weight: 700;
+	-webkit-transform:
+    	scale(2.4, 2.3)
+    	rotate(90deg)
+    	translate(6em, -5.8em);
+  -moz-transform:
+    	scale(2.4, 2.3)
+    	rotate(90deg)
+    	translate(6em, -5.8em);
+}
+
+.css3 {
+  color: #0096fc;
+  letter-spacing: .01em;
+  font-weight: 700;
+	-webkit-transform:
+    	scale(6.8, 6.75)
+    	rotate(90deg)
+    	translate(1.32em, -4.54em);
+  -moz-transform:
+    	scale(6.8, 6.75)
+    	rotate(90deg)
+    	translate(1.32em, -4.54em);
+}
+
+.jquery {
+  letter-spacing: 0.045em;
+  font-weight: 700;
+	-webkit-transform:
+    	scale(3.88, 3.8)
+    	translate(5.42em, 3.72em);
+  -moz-transform:
+    	scale(3.88, 3.8)
+    	translate(5.42em, 3.72em);
+}
+
+.ruby {
+  font-weight: 300;
+  letter-spacing: 0em;
+  word-spacing: .1em;
+  -webkit-transform:
+    	scale(2)
+      translate(12.7em, 8.6em);
+  -moz-transform:
+      scale(2)
+      translate(12.7em, 8.6em);
+}
+
+.react {
+  font-weight: 300;
+  letter-spacing: -0.07em;
+  -webkit-transform:
+    	scale(3.9, 4)
+      translate(6.05em, .95em);
+  -moz-transform:
+      scale(3.9, 4)
+      translate(6.05em, .95em);
+}
+
+.api {
+  font-weight: 700;
+  letter-spacing: -.03em;
+  -webkit-transform:
+    	scale(3.4)
+      translate(7.03em, 2.15em);
+  -moz-transform:
+      scale(3.4)
+      translate(7.03em, 2.15em);
+}
+
+.express {
+  font-weight: 300;
+  letter-spacing: -0.05em;
+  -webkit-transform:
+    	scale(2.75, 3)
+      translate(1.72em, 4.95em);
+  -moz-transform:
+      scale(2.75, 3)
+      translate(1.72em, 4.95em);
+}
+
+
+
+.forever {
+  color: #0096fc;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  word-spacing: .2em;
+  -webkit-transform:
+  		scale(2)
+      translate(2.28em, 8.58em);
+  -moz-transform:
+      scale(2)
+      translate(2.28em, 8.58em);
+}
+
+.mean {
+  font-weight: 300;
+  letter-spacing: -0.05em;
+  -webkit-transform:
+    	scale(2.75, 3)
+      translate(1.72em, 4.95em);
+  -moz-transform:
+      scale(2.75, 3)
+      translate(1.72em, 4.95em);
+}
+
+.message {
+  color: #0096fc;
+  font-weight: 700;
+  letter-spacing: -.010em;
+  -webkit-transform:
+    	scale(1.85, 1.9)
+      translate(1.86em, 6.5em);
+  -moz-transform:
+      scale(1.85, 1.9)
+      translate(1.86em, 6.5em);
 }

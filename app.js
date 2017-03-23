@@ -13,7 +13,7 @@ var output = [];
 
 
 function pkgOrder(input) {
-  if (input.length === 0 || !input){
+  if (input.length === 0 ){
     $('.appending').append('<div class="card"><p>Sorry the information provided is invalid, please try again</p></div>');
     console.log("Sorry the information provided is invalid, please try again");
   } else {
