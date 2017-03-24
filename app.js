@@ -1,28 +1,40 @@
+// This is my main JS file to run when provided a given input
+
+$(document).ready(function() {
+    //inital variable set-up
+var input = [];
+// These are the provided from the email
+
+    // Input Option 1
 // var input = ["KittenService: CamelCaser","CamelCaser: "];
-  // This should return "CamelCaser, KittenService"
+    // This should return "CamelCaser, KittenService"
 
-var input =["KittenService: ", "Leetmeme: Cyberportal", "Cyberportal: Ice", "CamelCaser: KittenService", "Fraudstream: Leetmeme", "Ice: "];
-  // This should return "KittenService, Ice, Cyberportal, Leetmeme, CamelCaser, Fraudstream"
+    // Input Option 2
+var input = ["KittenService: ", "Leetmeme: Cyberportal", "Cyberportal: Ice", "CamelCaser: KittenService", "Fraudstream: Leetmeme", "Ice: "];
+    // This should return "KittenService, Ice, Cyberportal, Leetmeme, CamelCaser, Fraudstream"
 
-// var input =["KittenService: ", "Leetmeme: Cyberportal", "Cyberportal: Ice", "CamelCaser: KittenService", "Fraudstream: ", "Ice: Leetmeme"];
-  // This should be rejected because of the cycle
+    // Input Option 3 -- (ERROR)
+// var input = ["KittenService: ", "Leetmeme: Cyberportal", "Cyberportal: Ice", "CamelCaser: KittenService", "Fraudstream: ", "Ice: Leetmeme"];
+    // This should be rejected because of the cycle
 
-  $('.appending').append('<div class="card"><h1 class="title">Orignial Input:</h1><p>[ '+ input +' ]</p></div>');
+// This will be used to push in the packages and return the result
+var result = [];
 
-var output = [];
-
-
-function pkgOrder(input) {
-  if (input.length === 0 ){
-    $('.appending').append('<div class="card"><p>Sorry the information provided is invalid, please try again</p></div>');
-    console.log("Sorry the information provided is invalid, please try again");
-  } else {
-    for (var i = 0; i < input.length; i++) {
+// This fucntion takes in the other functions to return the output result
+function output(input) {
+    $('.appending').append('<div class="card"><h1 class="title">Orignial Input:</h1><p>[ ' + input + ' ]</p></div>');
+    console.log("Original Input: " + input);
+    if (input.length === 0) {
+        $('.appending').append('<div class="card"><p>Sorry the information provided is invalid, please try again</p></div>');
+        console.log("Sorry the information provided is invalid, please try again");
+    } else {
+        for (var i = 0; i < input.length; i++) {
             pkgInstall(input[i].trim());
         }
-        $('.appending').append('<div class="card"><h1 class="title">Output:</h1><p>'+ output +'</p></div>');
-        console.log(input);
-  }
+        $('.appending').append('<div class="card"><h1 class="title">Output:</h1><ol><li>'+ result.join("</li><li>") + '</li></ol></div>');
+
+        console.log("Output: " + result);
+    }
 }
 
 function pkgSearch(pkg) {
@@ -36,9 +48,7 @@ function pkgSearch(pkg) {
     return null;
 }
 
-function pkgCheck(pkg) {
-    return output.indexOf(pkg) > -1;
-}
+
 
 function pkgInstall(pkg) {
     var pkgParas = pkg.split(':');
@@ -50,25 +60,34 @@ function pkgInstall(pkg) {
         if (pkgSearchResult != null) {
             pkgInstall(pkgSearchResult);
         } else {
-            output.push(dependency);
+            result.push(dependency);
         }
     }
-    if (pkgCheck(pkgParas[0].trim())) {
-        return;
+
+
+    function pkgCheck(pkg) {
+        return result.indexOf(pkg) > -1;
     }
 
-    else {
-        output.push(pkgParas[0].trim());
-        if(output.length != input.length){
-          $('.appending').append('<div class="card errors"><h1 class="title">Output:</h1><p>Sorry the information provided is invalid, please try again</p></div>');
-        } else if (output.length === input.length){
-          $('.errors').addClass('hidden');
+    if (pkgCheck(pkgParas[0].trim())) {
+        return;
+    } else {
+        result.push(pkgParas[0].trim());
+        if (result.length != input.length) {
+            $('.appending').append('<div class="card errors"><h1 class="title">Output:</h1><p>Sorry the information provided is invalid, please try something that isnt a cycle</p></div>');
+        } else if (result.length === input.length) {
+            $('.errors').addClass('hidden');
         } else {
-          $('.appending').append('<div class="card errors"><p>This is awkward. But an unecptected error occured</p></div>');
+            $('.appending').append('<div class="card errors"><p>This is awkward. But an unecptected error occured</p></div>');
         }
 
     }
 
 }
 
-pkgOrder(input);
+// This calls the higher order function
+output(input);
+
+
+// End Documnet Ready
+});
