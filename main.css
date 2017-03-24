@@ -70,6 +70,15 @@ text-indent: 2em;
   bottom: 0;
   margin-left: 40px;
 }
+.content-footer{
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  margin-right: 40px;
+}
+.content-text{
+color: #0096fc;
+}
 
 .media{
   font-size: 30px;

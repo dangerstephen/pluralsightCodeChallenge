@@ -1,27 +1,9 @@
 // This is my main JS file to run when provided a given input
 
 $(document).ready(function() {
-    //inital variable set-up
-var input = [];
-// These are the provided from the email
 
-    // Input Option 1
-// var input = ["KittenService: CamelCaser","CamelCaser: "];
-    // This should return "CamelCaser, KittenService"
 
-    // Input Option 2
-var input = ["KittenService: ", "Leetmeme: Cyberportal", "Cyberportal: Ice", "CamelCaser: KittenService", "Fraudstream: Leetmeme", "Ice: "];
-    // This should return "KittenService, Ice, Cyberportal, Leetmeme, CamelCaser, Fraudstream"
-
-    // Input Option 3 -- (ERROR)
-// var input = ["KittenService: ", "Leetmeme: Cyberportal", "Cyberportal: Ice", "CamelCaser: KittenService", "Fraudstream: ", "Ice: Leetmeme"];
-    // This should be rejected because of the cycle
-
-// This will be used to push in the packages and return the result
-var result = [];
-
-// This fucntion takes in the other functions to return the output result
-function output(input) {
+function generate(input) {
     $('.appending').append('<div class="card"><h1 class="title">Original Input:</h1><p>[ ' + input + ' ]</p></div>');
     console.log("Original Input: " + input);
     if (input.length === 0) {
@@ -32,7 +14,6 @@ function output(input) {
             pkgInstall(input[i].trim());
         }
         $('.appending').append('<div class="card"><h1 class="title">Output:</h1><ol><li>'+ result.join("</li><li>") + '</li></ol></div>');
-
         console.log("Output: " + result);
     }
 }
@@ -40,12 +21,11 @@ function output(input) {
 function pkgSearch(pkg) {
     for (var i = 0; i < input.length; i++) {
         var pkgParas = input[i].trim().split(':');
-
         if (pkgParas[0] != '' && pkgParas[0].indexOf(pkg) > -1) {
             return input[i];
         }
     }
-    return null;
+    return false;
 }
 
 
@@ -53,11 +33,11 @@ function pkgSearch(pkg) {
 function pkgInstall(pkg) {
     var pkgParas = pkg.split(':');
 
-    if (pkgParas.length > 1 && pkgParas[1].trim() != '') {
+    if (pkgParas[1].trim() != '' && pkgParas.length > 1  ) {
         var dependency = pkgParas[1].trim();
         var pkgSearchResult = pkgSearch(dependency);
 
-        if (pkgSearchResult != null) {
+        if (pkgSearchResult != false) {
             pkgInstall(pkgSearchResult);
         } else {
             result.push(dependency);
@@ -85,9 +65,18 @@ function pkgInstall(pkg) {
 
 }
 
-// This calls the higher order function
-output(input);
+var input = [];
+// var input = ["KittenService: CamelCaser","CamelCaser: "];
+    // This should return "CamelCaser, KittenService"
 
+var input = ["KittenService: ", "Leetmeme: Cyberportal", "Cyberportal: Ice", "CamelCaser: KittenService", "Fraudstream: Leetmeme", "Ice: "];
+    // This should return "KittenService, Ice, Cyberportal, Leetmeme, CamelCaser, Fraudstream"
 
-// End Documnet Ready
+// var input = ["KittenService: ", "Leetmeme: Cyberportal", "Cyberportal: Ice", "CamelCaser: KittenService", "Fraudstream: ", "Ice: Leetmeme"];
+    // This should be rejected because of the cycle
+
+var result = [];
+
+generate(input);
+
 });
