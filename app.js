@@ -22,7 +22,7 @@ var result = [];
 
 // This fucntion takes in the other functions to return the output result
 function output(input) {
-    $('.appending').append('<div class="card"><h1 class="title">Orignial Input:</h1><p>[ ' + input + ' ]</p></div>');
+    $('.appending').append('<div class="card"><h1 class="title">Original Input:</h1><p>[ ' + input + ' ]</p></div>');
     console.log("Original Input: " + input);
     if (input.length === 0) {
         $('.appending').append('<div class="card"><p>Sorry the information provided is invalid, please try again</p></div>');
